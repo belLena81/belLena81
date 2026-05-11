@@ -37,19 +37,7 @@ This GitHub README also highlights practical architecture and tooling experience
 - **Ollama REST API integration** for local LLM inference
 - Modular design focused on scalability, testing, and easy extension
 
-## ✨ Experience Highlights
-
-- Developed backend services for call platforms and real-time communication systems
-- Implemented integrations with FreeSwitch
-- Built authentication and reporting systems from scratch
-- Worked with AWS services, Kafka, and distributed databases
-- Wrote unit tests and technical documentation
-- Helped onboard new developers
-
 ## 🌍 Languages
 
 - Ukrainian — Native
 - English — Advanced
-
-
-Clean code. Functional programming. Scalable backend systems.
