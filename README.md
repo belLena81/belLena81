@@ -19,15 +19,16 @@ A cloud-native RAG platform that turns a private technical library (PDF/EPUB) in
 
 ### [**DevMate**](https://github.com/belLena81/devmate)
 
-A local-first CLI that generates commit messages, branch names, and PR descriptions from your repo state, using a locally running LLM via Ollama. Fully offline, read-only, no auto-applied Git mutations.
-
-* Map-reduce pipeline for large diffs: chunking → parallel summarization → hierarchical reduction  
-* Content-addressed caching (SHA256) with automatic invalidation  
-* Concurrency tuned for CPU inference: semaphores, timeouts, retry with backoff  
-* Clean/Hexagonal architecture with domain interfaces like `GitClient`, `LLM`, `Cache`  
-* Cobra-based CLI, dependency injection, built for easy testing and extension
-
-`Go` `CLI` `Ollama` `LLM (local inference)` `Cobra` `Hexagonal Architecture`
+A local-first Go CLI that drafts commit messages, branch names, and PR descriptions from your repository state using a locally running LLM via Ollama. Fully offline, 
+  strictly read-only: it prints to stdout and never runs a mutating Git command.                                                                                        
+                                                                                                                                                                        
+  * Map-reduce pipeline for large diffs: file-aware chunking → parallel summarization (errgroup worker pool) → hierarchical reduction → synthesis
+  * Content-addressed response cache (SHA-256 over template, model, binary hash, input, flags) with atomic writes and automatic invalidation
+  * Resilient LLM calls: exponential backoff that retries only transient failures, request timeouts, Ctrl-C cancellation propagated through context
+  * Hexagonal architecture: domain interfaces (LLM, GitClient, Progress, Cache), service layer depends on domain only, infra swapped via dependency injection
+  * Production-grade CLI ergonomics: Cobra with shell completion, layered config (defaults → JSON → env, XDG paths), TTY-aware progress, clean exit codes, interface-based tests with fakes and httptest                                                                                                                         
+                                                                                                                                                                        
+  `Go` `CLI` `Ollama` `LLM (local inference)` `Cobra` `Hexagonal Architecture` 
 
 ## **💼 What I Work On**
 
